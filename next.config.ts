@@ -6,9 +6,7 @@ const nextConfig = {
 
 export default withPWA({
   ...nextConfig,
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-  },
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
 });
