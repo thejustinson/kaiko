@@ -5,7 +5,7 @@
   "start_url": "/onboarding",
   "display": "standalone",
   "background_color": "#FBF5D7",
-  "theme_color": "#FD8B44",
+  "theme_color": "#FBF5D7",
   "icons": [
     {
       "src": "/icons/icon-48x48.png",
