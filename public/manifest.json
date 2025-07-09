@@ -3,7 +3,7 @@
   "short_name": "Kaiko",
   "description": "Your app description here",
   "start_url": "/onboarding",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#FBF5D7",
   "theme_color": "#FBF5D7",
   "icons": [
