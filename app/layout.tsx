@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geologica } from "next/font/google";
 import "./globals.css";
-import ContextMenuDisabler from "../utils/ContextMenuDisabler";
+import MobileAppWrapper from "../utils/MobileAppWrapper";
 import PrivyProvider from "../components/PrivyProvider";
 import { Toaster } from "react-hot-toast";
 
@@ -19,8 +19,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#FBF5D7" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+      </head>
       <body className={geologica.className}>
-        <ContextMenuDisabler>
+        <MobileAppWrapper>
           <PrivyProvider>
             {children}
             <Toaster 
@@ -48,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               }}
             />
           </PrivyProvider>
-        </ContextMenuDisabler>
+        </MobileAppWrapper>
       </body>
     </html>
   );
