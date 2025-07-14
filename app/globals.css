@@ -7,6 +7,8 @@
   --accent: #FD8B44;
   --foreground: #2D201B;
   --secondary-foreground: rgba(255, 255, 255, 0.851);
+  --primary-button: #FF4400;
+  --text-fade: #5C5757;
 }
 
 @theme{
@@ -14,6 +16,8 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary-button: var(--primary-button);
+  --color-fade: var(--text-fade);
 }
 
 html, body {

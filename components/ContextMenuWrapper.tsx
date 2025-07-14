@@ -11,28 +11,29 @@ export default function ContextMenuWrapper({
   const [coords, setCoords] = useState({ x: 0, y: 0 })
   const menuRef = useRef<HTMLDivElement>(null)
 
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault()
+    // Clamp menu position to stay within viewport
+    const menuWidth = 160; // px, adjust if needed
+    const menuHeight = 80; // px, adjust if needed
+    const x = Math.min(e.clientX, window.innerWidth - menuWidth)
+    const y = Math.min(e.clientY, window.innerHeight - menuHeight)
+    setCoords({ x, y })
+    setVisible(true)
+  }
+
+  const handleClick = () => setVisible(false)
+
   useEffect(() => {
-    const handleContextMenu = (e: MouseEvent) => {
-      e.preventDefault()
-      setCoords({ x: e.clientX, y: e.clientY })
-      setVisible(true)
+    if (visible) {
+      window.addEventListener('click', handleClick)
+      return () => window.removeEventListener('click', handleClick)
     }
-
-    const handleClick = () => setVisible(false)
-
-    window.addEventListener('contextmenu', handleContextMenu)
-    window.addEventListener('click', handleClick)
-
-    return () => {
-      window.removeEventListener('contextmenu', handleContextMenu)
-      window.removeEventListener('click', handleClick)
-    }
-  }, [])
+  }, [visible])
 
   return (
-    <div className="relative">
+    <div className="relative" onContextMenu={handleContextMenu}>
       {children}
-
       {visible && (
         <div
           ref={menuRef}

@@ -2,7 +2,7 @@
   "name": "Kaiko",
   "short_name": "Kaiko",
   "description": "Your app description here",
-  "start_url": "/onboarding",
+  "start_url": "/splash-screen",
   "display": "standalone",
   "background_color": "#FBF5D7",
   "theme_color": "#FBF5D7",
