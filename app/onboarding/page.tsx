@@ -71,7 +71,7 @@ export default function OnboardingPage() {
 
     // Check if user already has a Solana wallet
     const solanaWallets = user?.linkedAccounts.filter((account) => {
-      return (account as any).chainType === 'solana'
+      return (account as { chainType: string }).chainType === 'solana'
     }) || []
 
     let wallet_address: string | undefined;
@@ -87,7 +87,7 @@ export default function OnboardingPage() {
         toast.error('Failed to create Solana wallet')
       }
     } else {
-      wallet_address = solanaWallets.map(w => (w as any).address)[0]
+      wallet_address = solanaWallets.map(w => (w as { address: string }).address)[0]
     }
 
     try {

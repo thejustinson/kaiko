@@ -7,88 +7,6 @@ import { useEffect, useState } from 'react';
 import {useLoginWithEmail, usePrivy} from '@privy-io/react-auth';
 import { useRouter } from 'next/navigation'
 
-const pfps = [
-  {
-    src: "/default-pfps/pfp-earth.png",
-    alt: "Earth PFP",
-    bg: "#B3A77E",
-    style: "top-6 left-6",
-    shadow: "0 0 24px 4px #B3A77E55",
-  },
-  {
-    src: "/default-pfps/pfp-nature.png",
-    alt: "Nature PFP",
-    bg: "#BAC84F",
-    style: "top-6 right-6",
-    shadow: "0 0 24px 4px #BAC84F55",
-  },
-  {
-    src: "/default-pfps/pfp-sun.png",
-    alt: "Sun PFP",
-    bg: "#FDED92",
-    style: "top-20 left-40",
-    shadow: "0 0 24px 4px #FDED9255",
-  },
-  {
-    src: "/default-pfps/pfp-water.png",
-    alt: "Water PFP",
-    bg: "#84EFF9",
-    style: "bottom-8 right-10",
-    shadow: "0 0 24px 4px #84EFF955",
-  },
-];
-
-const floatAnim = {
-  animate: {
-    y: [0, -10, 0, 10, 0],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  },
-};
-
-function AuthImages() {
-  return (
-    <div className="absolute h-1/2 inset-0 pointer-events-none">
-      {pfps.map((pfp, i) => (
-        <motion.div
-          key={pfp.src}
-          className={`absolute ${pfp.style} rounded-3xl`}
-          style={{
-            background: pfp.bg,
-            boxShadow: pfp.shadow,
-            width: 70,
-            height: 70,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-          animate={{
-            y: [0, -10, 0, 10, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.5,
-          }}
-        >
-          <Image
-            src={pfp.src}
-            alt={pfp.alt}
-            width={70}
-            height={70}
-            className="rounded-3xl"
-            draggable={false}
-          />
-        </motion.div>
-      ))}
-    </div>
-  );
-}
-
 export default function AuthPage() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [loginStep, setLoginStep] = useState<'email' | 'otp'>('email');
@@ -135,8 +53,7 @@ export default function AuthPage() {
           console.error('Error confirming user:', err);
         });
     }
-  }, [authenticated, user]);
-
+  }, [authenticated, user, router]);
 
   return (
     <div className="h-dvh w-dvw bg-accent relative">
@@ -153,8 +70,6 @@ export default function AuthPage() {
           />
         </div>
       </div>
-
-      {/* <AuthImages /> */}
 
       <div className="absolute h-1/2 w-full bg-background bottom-0 rounded-t-4xl px-5 flex flex-col justify-center items-center text-center gap-3">
         <p className="text-3xl font-bold">Connect, Chat and Play with Friends</p>
