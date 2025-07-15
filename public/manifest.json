@@ -1,7 +1,7 @@
 {
   "name": "Kaiko",
   "short_name": "Kaiko",
-  "description": "Your app description here",
+  "description": "Kaiko is a social gaming platform that lets you play quick, fun games with friends while chatting in real-time. Whether you're killing time or vibing with frens, Kaiko blends casual gameplay and messaging into one smooth, nostalgic experience.",
   "start_url": "/splash-screen",
   "display": "standalone",
   "background_color": "#FBF5D7",

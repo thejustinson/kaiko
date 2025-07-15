@@ -7,9 +7,9 @@ export async function POST(req: NextRequest) {
     const { email_address, username, privy_id, bio, avatar_type, avatar, wallet_address } = body;
 
     // Validate required fields
-    if (!email_address || !username || !privy_id) {
+    if (!email_address || !username || !privy_id || !wallet_address) {
       return NextResponse.json(
-        { error: "Missing required fields: email_address, username, privy_id" },
+        { error: "Missing required fields: email_address, username, privy_id, wallet_address" },
         { status: 400 }
       );
     }
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
       .insert({
         email_address,
         username,
-        privy_id: privy_id,
+        privy_id,
         bio: bio || null,
         avatar_type: avatar_type || "default",
         avatar,

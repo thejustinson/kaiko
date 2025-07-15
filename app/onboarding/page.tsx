@@ -135,7 +135,7 @@ export default function OnboardingPage() {
         }))
 
         toast.success('Profile saved successfully!')
-        router.push('/dashboard')
+        router.push('/hub')
       }
 
     } catch (error) {

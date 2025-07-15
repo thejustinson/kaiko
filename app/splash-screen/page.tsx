@@ -24,7 +24,7 @@ export default function SplashScreen() {
   useEffect(() => {
     if (hasMinTimeElapsed && authenticated !== undefined) {
       if (authenticated && user) {
-        router.push('/dashboard');
+        router.push('/hub');
       } else {
         router.push('/auth');
       }

@@ -38,13 +38,13 @@ export default function AuthPage() {
 
   useEffect(() => {
     if (authenticated && user) {
-      const privyId = user.id;
+      const privy_id = user.id;
 
-      fetch(`/api/users/fetch?privyId=${privyId}&intent=confirm`)
+      fetch(`/api/users/fetch?privy_id=${privy_id}&intent=confirm`)
         .then(async (res) => {
           const data = await res.json();
           if (data.exists) {
-            router.push('/dashboard')
+            router.push('/hub')
           } else {
             router.push('/onboarding')
           }
